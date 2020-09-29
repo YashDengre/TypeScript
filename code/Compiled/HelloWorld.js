@@ -1,5 +1,5 @@
 function HelloWorld() {
-    let id = document.getElementById("container");
+    var id = document.getElementById("container");
     if (id != null) {
         console.log("Check")
         id.innerText = "Hello World!";
