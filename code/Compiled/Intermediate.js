@@ -115,8 +115,8 @@ var Animal = /** @class */ (function () {
     };
     return Animal;
 }());
-var myAnimal = new Animal("Dave");
-myAnimal.walk(78);
+//let myAnimal =  new Animal("Dave");//this won't be allowed any more
+//myAnimal.walk(78);
 //extend aor inheritance:
 var Snake = /** @class */ (function (_super) {
     __extends(Snake, _super);

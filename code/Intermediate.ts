@@ -111,7 +111,7 @@ alert("Name: "+this.firstName + " "+this.lastName);
 }
 
 //Class : ANimal
-class Animal {
+abstract class Animal { //created this as abstract.
     private name : string;
     constructor (theName:string)
     {
@@ -122,12 +122,12 @@ class Animal {
         console.log("Hi my name is "+this.name + " and I am walking " + distance + " meter");
     }
     }
-    let myAnimal =  new Animal("Dave");
-    myAnimal.walk(78);
+    //let myAnimal =  new Animal("Dave");//this won't be allowed any more
+    //myAnimal.walk(78);
 
     //extend aor inheritance:
 
-    class Snake extends Animal{
+    class Snake extends Animal{ //this will be allowed
         constructor(theName : string){
             super(theName)
         }
@@ -137,4 +137,3 @@ class Animal {
         }
     }
     //but Animal class should not be directly instantiated because Animla is type - we have to define what animal it so we need to make it onlt extensible 
-    
