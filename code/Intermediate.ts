@@ -211,3 +211,74 @@ class Restaurant
 }
 var objectO =  new Restaurant(["dosa","idly","sambhar"]);
 objectO.list();
+
+//Inheritacne:
+class Person{
+    // constructor()
+    // {
+    //     console.log( "Person Constructor");
+    // }
+    constructor(name:string)
+    {
+        console.log( name+"Person Constructor");
+    }
+    getID()
+    {
+           return 10;
+    }
+}
+class Employee extends Person
+{
+
+    // constructor()
+    // {
+    //     console.log( "PEmployee Constructor");
+    // }
+    constructor(name:string)
+    {
+        super(name);
+        console.log( name+"Employee Constructor");
+    }
+    getID()
+    {
+        //return 5;
+        return super.getID();
+    }
+}
+
+//multiple constructor are not allowed in TypeScript
+//let objOfEmployee1 = new Employee(); //it will direclt call the constructor of parent class
+//even we have not defined any in the child class
+let objOfEmployee2 = new Employee("Yash");//even when we ahve provided the paramter construcor
+//what if we define the constructor in chlid class also then
+//we need to call the constructor of parent in child first by super(); otherwise compiler will give error
+//if only parent class contain the method that we are calling then it will directly call ths method from paraent class
+console.log(objOfEmployee2.getID());
+//what if we wanted to use method of child class then in child class we need to call the method of parent
+// by super -> return super.getID();
+
+//Question Create Class Human and Employee , employee should return name and department but name should b in Human class.
+
+class Human
+{
+    protected name:string;
+    constructor(theName:string)
+    {
+        this.name = theName;
+    }
+
+}
+class Employees extends Human{
+    private department:string;
+    constructor(theName:string,theDepartment:string)
+    {   super(theName);
+        this.department = theDepartment;
+    }
+    getInfo()
+    {
+        console.log("Name of the Employee: "+this.name + "\nDepartment of the Employee: "+this.department);
+    }
+}
+
+let EmployeeObject =  new Employees("Yash Dengre","Computer/IT");
+EmployeeObject.getInfo();

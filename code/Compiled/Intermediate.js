@@ -168,3 +168,65 @@ var Restaurant = /** @class */ (function () {
 }());
 var objectO = new Restaurant(["dosa", "idly", "sambhar"]);
 objectO.list();
+//Inheritacne:
+var Person = /** @class */ (function () {
+    // constructor()
+    // {
+    //     console.log( "Person Constructor");
+    // }
+    function Person(name) {
+        console.log(name + "Person Constructor");
+    }
+    Person.prototype.getID = function () {
+        return 10;
+    };
+    return Person;
+}());
+var Employee = /** @class */ (function (_super) {
+    __extends(Employee, _super);
+    // constructor()
+    // {
+    //     console.log( "PEmployee Constructor");
+    // }
+    function Employee(name) {
+        var _this = _super.call(this, name) || this;
+        console.log(name + "Employee Constructor");
+        return _this;
+    }
+    Employee.prototype.getID = function () {
+        //return 5;
+        return _super.prototype.getID.call(this);
+    };
+    return Employee;
+}(Person));
+//multiple constructor are not allowed in TypeScript
+//let objOfEmployee1 = new Employee(); //it will direclt call the constructor of parent class
+//even we have not defined any in the child class
+var objOfEmployee2 = new Employee("Yash"); //even when we ahve provided the paramter construcor
+//what if we define the constructor in chlid class also then
+//we need to call the constructor of parent in child first by super(); otherwise compiler will give error
+//if only parent class contain the method that we are calling then it will directly call ths method from paraent class
+console.log(objOfEmployee2.getID());
+//what if we wanted to use method of child class then in child class we need to call the method of parent
+// by super -> return super.getID();
+//Question Create Class Human and Employee , employee should return name and department but name should b in Human class.
+var Human = /** @class */ (function () {
+    function Human(theName) {
+        this.name = theName;
+    }
+    return Human;
+}());
+var Employees = /** @class */ (function (_super) {
+    __extends(Employees, _super);
+    function Employees(theName, theDepartment) {
+        var _this = _super.call(this, theName) || this;
+        _this.department = theDepartment;
+        return _this;
+    }
+    Employees.prototype.getInfo = function () {
+        console.log("Name of the Employee: " + this.name + "\nDepartment of the Employee: " + this.department);
+    };
+    return Employees;
+}(Human));
+var EmployeeObject = new Employees("Yash Dengre", "Computer/IT");
+EmployeeObject.getInfo();
