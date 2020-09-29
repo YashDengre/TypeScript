@@ -57,11 +57,84 @@ class Greet<T>
     }
 }
 var greeter =  new Greet<string>("Hello World");
-document.body.innerHTML = greeter.greet();
+//document.body.innerHTML = greeter.greet();
 //Following is a function to calculate Volume Of Cube and display result in web page.
 function volumeOfCube(length:number, widht:number, height:number) : string
 {
     let volume =  length * widht * height;
     return "Volume of the cube is : "+ volume
 }
-document.body.innerHTML = document.body.innerHTML + "<br> : <h2>"+volumeOfCube(10,20,30)+"</h2?";
+//document.body.innerHTML = document.body.innerHTML + "<br> : <h2>"+volumeOfCube(10,20,30)+"</h2?";
+
+//Classes:
+class Student
+{
+    name:string;    
+}
+var classObject =  new Student();
+classObject = {
+    name : "Yash Dengre"
+}
+// class Websites
+class WebSites {
+    url :string;
+    facebookLikes:number;
+}
+var google = new WebSites();
+google.url = "https://gooogle.co.in";
+google.facebookLikes - 12345;
+
+//Class:' Strudents with private and public scope of variable in TypeScript
+// by default it is public:
+class Strudents{
+    private firstName : string ;//private member
+    private lastName : string; //private member
+    yearofBirth : number ; //by default public scope
+    schoolName:string;
+    public city : string;
+    constructor(fisrtName:string,lastName:string,dob:number,schoolName:string, city:string)
+    {
+this.firstName =fisrtName;
+this.lastName =lastName;
+this.yearofBirth = dob;
+this.schoolName = schoolName;
+this.city =city;
+    }
+    age()
+    {
+        return 2020 - this.yearofBirth + "Current Age"
+    }
+    printStudentFullName():void
+    {
+alert("Name: "+this.firstName + " "+this.lastName);
+    }
+}
+
+//Class : ANimal
+class Animal {
+    private name : string;
+    constructor (theName:string)
+    {
+        this.name = theName;
+    }
+    walk(distance:number)
+    {
+        console.log("Hi my name is "+this.name + " and I am walking " + distance + " meter");
+    }
+    }
+    let myAnimal =  new Animal("Dave");
+    myAnimal.walk(78);
+
+    //extend aor inheritance:
+
+    class Snake extends Animal{
+        constructor(theName : string){
+            super(theName)
+        }
+        walk(distance:number)
+        {
+            console.log("Snake don't really walk");
+        }
+    }
+    //but Animal class should not be directly instantiated because Animla is type - we have to define what animal it so we need to make it onlt extensible 
+    

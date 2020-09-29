@@ -6,6 +6,19 @@ It gives us the most dynamic capabilities for developing real time large scale s
 C# and Java use generics enabling us to create a component that can work over a variety of types rather than a single one.
 */
 //You can implement Generics by writing "T" instead of any specific data type like- number, boolean etc. as shown below.
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 function calVolumeCube(side) {
     return side * side * side;
 }
@@ -48,10 +61,71 @@ var Greet = /** @class */ (function () {
     return Greet;
 }());
 var greeter = new Greet("Hello World");
-document.body.innerHTML = greeter.greet();
+//document.body.innerHTML = greeter.greet();
 //Following is a function to calculate Volume Of Cube and display result in web page.
 function volumeOfCube(length, widht, height) {
     var volume = length * widht * height;
     return "Volume of the cube is : " + volume;
 }
-document.body.innerHTML = document.body.innerHTML + "<br> : <h2>" + volumeOfCube(10, 20, 30) + "</h2?";
+//document.body.innerHTML = document.body.innerHTML + "<br> : <h2>"+volumeOfCube(10,20,30)+"</h2?";
+//Classes:
+var Student = /** @class */ (function () {
+    function Student() {
+    }
+    return Student;
+}());
+var classObject = new Student();
+classObject = {
+    name: "Yash Dengre"
+};
+// class Websites
+var WebSites = /** @class */ (function () {
+    function WebSites() {
+    }
+    return WebSites;
+}());
+var google = new WebSites();
+google.url = "https://gooogle.co.in";
+google.facebookLikes - 12345;
+//Class:' Strudents with private and public scope of variable in TypeScript
+// by default it is public:
+var Strudents = /** @class */ (function () {
+    function Strudents(fisrtName, lastName, dob, schoolName, city) {
+        this.firstName = fisrtName;
+        this.lastName = lastName;
+        this.yearofBirth = dob;
+        this.schoolName = schoolName;
+        this.city = city;
+    }
+    Strudents.prototype.age = function () {
+        return 2020 - this.yearofBirth + "Current Age";
+    };
+    Strudents.prototype.printStudentFullName = function () {
+        alert("Name: " + this.firstName + " " + this.lastName);
+    };
+    return Strudents;
+}());
+//Class : ANimal
+var Animal = /** @class */ (function () {
+    function Animal(theName) {
+        this.name = theName;
+    }
+    Animal.prototype.walk = function (distance) {
+        console.log("Hi my name is " + this.name + " and I am walking " + distance + " meter");
+    };
+    return Animal;
+}());
+var myAnimal = new Animal("Dave");
+myAnimal.walk(78);
+//extend aor inheritance:
+var Snake = /** @class */ (function (_super) {
+    __extends(Snake, _super);
+    function Snake(theName) {
+        return _super.call(this, theName) || this;
+    }
+    Snake.prototype.walk = function (distance) {
+        console.log("Snake don't really walk");
+    };
+    return Snake;
+}(Animal));
+//but Animal class should not be directly instantiated because Animla is type - we have to define what animal it so we need to make it onlt extensible 
