@@ -7,6 +7,7 @@ var array3 = [1, 2, 3, 'name'];
 var array4 = [1, 2, 3, 'name'];
 var bool_var1 = true;
 var bool_var2 = true;
+//var bool_var3 : boolean = 'false' // not allowed - compiler will give error but it will compile and  we need to indetify in TS itself so that our JS will not be affected
 //funciton
 //x, y -define as a number and  third number means it will return a number type.
 var Add_Two = function (x, y) { return x + y; };
@@ -43,3 +44,13 @@ function Add_number_string(num1, num2) {
     return num1 + num2;
 }
 console.log(Add_number_string("10", 20)); //correct
+var array_any = [1, 2, 3, "Yash", true, false, 10.25, null, undefined];
+//any :  can take any type of vaue, which denotes dynamic type
+/*Create a function "arrLength" that takes string array as input, calculate number of elements present in it and return it.
+Use the function to find out the length of the array ["hi", "there"] and [1,5,4].
+Define proper types as and when required.*/
+function arrLength(arrayInp) {
+    var len_of_Array = arrayInp.length;
+    return len_of_Array;
+}
+console.log(arrLength(["Name", "City", "Mobile", "Education", "JOB"]));
