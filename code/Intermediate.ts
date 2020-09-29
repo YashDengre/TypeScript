@@ -282,3 +282,119 @@ class Employees extends Human{
 
 let EmployeeObject =  new Employees("Yash Dengre","Computer/IT");
 EmployeeObject.getInfo();
+
+//Polymorphism  - Overloading:
+//Overloading is possible in TypeSscript 
+//See the below example:
+class Length
+{
+    Length(length: number);
+    Length(length:string);
+    Length(value: any) {
+    if (value && typeof value == "number") {
+    alert("overload 1");
+    }
+    if (value && typeof value == "string") {
+    alert("overload 2");
+    }
+    }
+}
+
+//In wide picture: overloading does provide a security and ensurity that correct method is called for correct requirement
+//overloading is just a check on typescript - won't complied in JS
+function areaOfQuad(side1:number):any;
+function areaOfQuad(side1:number,side2:number):any;
+function areaOfQuad(side1:number,side2:number,side3:number):any;
+function areaOfQuad(side1:number,side2?:number,side3?:number,side4?:number):any;
+function areaOfQuad(side1:number,side2?:number,side3?:number,side4?:number):any
+{
+    if(side2 === undefined && side3===undefined && side4 == undefined)
+    {
+        return side1*side1;
+    }
+    else if(side3 === undefined && side4 === undefined)
+    {
+        return side1*side2;
+    }
+    else if(side4!== undefined)
+    {
+        return("area of trapezium");
+    }
+   
+    
+}
+
+// function areaOfQuad()
+// {
+
+// } 
+areaOfQuad(1); //for square
+areaOfQuad(1,2) // rectangle
+areaOfQuad(1,2,3,4) //trapezium
+areaOfQuad(1,2,3)//wont allow because we have not overloaded for this option
+console.log(areaOfQuad(2));
+console.log(areaOfQuad(2,4));
+console.log(areaOfQuad(2,4,8));
+console.log(areaOfQuad(2,4,8,16));
+/*Polymorphism - Overriding
+Method Overriding is a mechanism by which the child class redefines the superclass’s method.
+The following code snippet will demonstrate how:*/
+
+class PrinterClass { 
+   doPrint():void {
+      console.log("doPrint() from Parent called…") 
+   } 
+} 
+
+class StringPrinter extends PrinterClass { 
+   doPrint():void { 
+      super.doPrint() 
+      console.log("doPrint() is printing a string…")
+   } 
+} 
+
+var obj = new StringPrinter() 
+obj.doPrint()
+
+/*
+Create a class "Automobile" that has two protected properties and a method:
+
+    fuelType: "petrol";
+    price
+    printInfo(): displays "I am autombile" in console Now create another class "Car" which extends the above class and has two functions
+    constructor: this initializes "price"
+    printInfo: displays Fuel type and price of that object in //overriding function
+
+Create object of type Car and call function "printInfo".
+*/
+//Solution: 
+class Automboile
+{
+    protected fuelType:string;
+    protected price:number;
+    printInfo()
+    {
+        console.log("I am automobile");
+    }
+    constructor(theprice:number)
+    {
+        this.price = theprice;
+        this.fuelType = "Petrol";
+    }
+
+}
+class Car extends Automboile{
+    constructor(theprice:number)
+    { 
+        super(theprice);
+    }
+    printInfo()
+    {
+        super.printInfo();
+        console.log("Fuel Type: "+this.fuelType + "\nPrice of Fuel: "+this.price);
+    }
+}
+
+let carOb =  new Car(75);
+carOb.printInfo();
+

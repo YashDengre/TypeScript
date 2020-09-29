@@ -230,3 +230,100 @@ var Employees = /** @class */ (function (_super) {
 }(Human));
 var EmployeeObject = new Employees("Yash Dengre", "Computer/IT");
 EmployeeObject.getInfo();
+//Polymorphism  - Overloading:
+//Overloading is possible in TypeSscript 
+//See the below example:
+var Length = /** @class */ (function () {
+    function Length() {
+    }
+    Length.prototype.Length = function (value) {
+        if (value && typeof value == "number") {
+            alert("overload 1");
+        }
+        if (value && typeof value == "string") {
+            alert("overload 2");
+        }
+    };
+    return Length;
+}());
+function areaOfQuad(side1, side2, side3, side4) {
+    if (side2 === undefined && side3 === undefined && side4 == undefined) {
+        return side1 * side1;
+    }
+    else if (side3 === undefined && side4 === undefined) {
+        return side1 * side2;
+    }
+    else if (side4 !== undefined) {
+        return ("area of trapezium");
+    }
+}
+// function areaOfQuad()
+// {
+// } 
+areaOfQuad(1); //for square
+areaOfQuad(1, 2); // rectangle
+areaOfQuad(1, 2, 3, 4); //trapezium
+areaOfQuad(1, 2, 3); //wont allow because we have not overloaded for this option
+console.log(areaOfQuad(2));
+console.log(areaOfQuad(2, 4));
+console.log(areaOfQuad(2, 4, 8));
+console.log(areaOfQuad(2, 4, 8, 16));
+/*Polymorphism - Overriding
+Method Overriding is a mechanism by which the child class redefines the superclass’s method.
+The following code snippet will demonstrate how:*/
+var PrinterClass = /** @class */ (function () {
+    function PrinterClass() {
+    }
+    PrinterClass.prototype.doPrint = function () {
+        console.log("doPrint() from Parent called…");
+    };
+    return PrinterClass;
+}());
+var StringPrinter = /** @class */ (function (_super) {
+    __extends(StringPrinter, _super);
+    function StringPrinter() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    StringPrinter.prototype.doPrint = function () {
+        _super.prototype.doPrint.call(this);
+        console.log("doPrint() is printing a string…");
+    };
+    return StringPrinter;
+}(PrinterClass));
+var obj = new StringPrinter();
+obj.doPrint();
+/*
+Create a class "Automobile" that has two protected properties and a method:
+
+    fuelType: "petrol";
+    price
+    printInfo(): displays "I am autombile" in console Now create another class "Car" which extends the above class and has two functions
+    constructor: this initializes "price"
+    printInfo: displays Fuel type and price of that object in //overriding function
+
+Create object of type Car and call function "printInfo".
+*/
+//Solution: 
+var Automboile = /** @class */ (function () {
+    function Automboile(theprice) {
+        this.price = theprice;
+        this.fuelType = "Petrol";
+    }
+    Automboile.prototype.printInfo = function () {
+        console.log("I am automobile");
+    };
+    return Automboile;
+}());
+var Car = /** @class */ (function (_super) {
+    __extends(Car, _super);
+    function Car(theprice) {
+        return _super.call(this, theprice) || this;
+    }
+    Car.prototype.printInfo = function () {
+        _super.prototype.printInfo.call(this);
+        console.log("Fuel Type: " + this.fuelType + "\nPrice of Fuel: " + this.price);
+    };
+    return Car;
+}(Automboile));
+var carOb = new Car(75);
+carOb.printInfo();
