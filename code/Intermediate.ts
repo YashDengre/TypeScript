@@ -137,3 +137,77 @@ abstract class Animal { //created this as abstract.
         }
     }
     //but Animal class should not be directly instantiated because Animla is type - we have to define what animal it so we need to make it onlt extensible 
+
+    //Interfaces:
+    //They allow- declare how a function should behave
+/*
+function operate(x:{shape:string, side:number})
+{
+    return x.side*x.side;
+}*/
+
+//var calc =  operate({shape:"sqaure",side:5});
+//   for above method we can create interface
+interface operateInterface {
+    shape?:string;
+    side:number;
+}
+function operate(x:operateInterface)
+{
+    return x.side*x.side;
+}
+var calc2 = operate({shape:"sqaure",side:5});
+
+//Interface helps in detecting error in compile time.
+
+	interface Volume {
+		length: number;
+		width: number;
+		sayHi: () => string;
+	}
+	//Volume binding object Physics to define all members as specified by interface 
+	var Physics: Volume = {
+		length: 10,
+		width: 10,
+		sayHi: (): string => { return "Hello" }
+	}
+class ImplementInterfaceVolume implements Volume
+{
+    length: number = 10;
+    width:number = 140;
+    sayHi():string{
+        return "Hello"
+    }
+}
+
+interface Player {
+    run(): void;
+    addLives(n:number):void;
+    score():number;
+}
+function createPlayer():Player
+{//whatever it should return it should be comptible with interface
+    return {
+        run:function(){},
+        addLives:function(n:number){},
+        score:function(){return-1}
+
+    }
+}
+var player1 = createPlayer();
+
+//Question Create a class  Restaurant with menu property and a function to display menu into console.
+class Restaurant
+{
+    public menu:string[];
+    constructor(menu:string[])
+    {
+        this.menu = menu;
+    }
+    list():void
+    {
+        console.log (this.menu);
+    }
+}
+var objectO =  new Restaurant(["dosa","idly","sambhar"]);
+objectO.list();

@@ -128,4 +128,43 @@ var Snake = /** @class */ (function (_super) {
     };
     return Snake;
 }(Animal));
-//but Animal class should not be directly instantiated because Animla is type - we have to define what animal it so we need to make it onlt extensible 
+function operate(x) {
+    return x.side * x.side;
+}
+var calc2 = operate({ shape: "sqaure", side: 5 });
+//Volume binding object Physics to define all members as specified by interface 
+var Physics = {
+    length: 10,
+    width: 10,
+    sayHi: function () { return "Hello"; }
+};
+var ImplementInterfaceVolume = /** @class */ (function () {
+    function ImplementInterfaceVolume() {
+        this.length = 10;
+        this.width = 140;
+    }
+    ImplementInterfaceVolume.prototype.sayHi = function () {
+        return "Hello";
+    };
+    return ImplementInterfaceVolume;
+}());
+function createPlayer() {
+    return {
+        run: function () { },
+        addLives: function (n) { },
+        score: function () { return -1; }
+    };
+}
+var player1 = createPlayer();
+//Question Create a class  Restaurant with menu property and a function to display menu into console.
+var Restaurant = /** @class */ (function () {
+    function Restaurant(menu) {
+        this.menu = menu;
+    }
+    Restaurant.prototype.list = function () {
+        console.log(this.menu);
+    };
+    return Restaurant;
+}());
+var objectO = new Restaurant(["dosa", "idly", "sambhar"]);
+objectO.list();
